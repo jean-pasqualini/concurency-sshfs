@@ -1,0 +1,18 @@
+version: '2.0'
+services:
+  send-files:
+    build: docker/send-file
+    privileged: true
+    depends_on:
+      - ssh
+    volumes:
+      - './docker/send-file/script.sh:/script.sh'
+  get-files:
+    build: docker/get-file
+    privileged: true
+    depends_on:
+      - ssh
+    volumes:
+      - './docker/get-file/script.sh:/script.sh'
+  ssh:
+    build: docker/ssh
