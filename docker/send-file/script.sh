@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-sshfs root@ssh:/root /var/mount/share -o sshfs_debug,noatime,allow_other,auto_cache,reconnect,StrictHostKeyChecking=no
+#mount -v -o vers=4,loud nfs:/ /var/mount/share
 
 while true; do
 	filepath=/var/mount/share/$(uuidgen).txt
-	touch $filepath
+	#touch $filepath
 	echo "SEND: $filepath"
 	sleep 5
 done

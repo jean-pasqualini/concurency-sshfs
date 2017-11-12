@@ -4,15 +4,18 @@ services:
     build: docker/send-file
     privileged: true
     depends_on:
-      - ssh
+      - nfs
     volumes:
       - './docker/send-file/script.sh:/script.sh'
   get-files:
     build: docker/get-file
     privileged: true
     depends_on:
-      - ssh
+      - nfs
     volumes:
       - './docker/get-file/script.sh:/script.sh'
-  ssh:
-    build: docker/ssh
+  nfs:
+    image: itsthenetwork/nfs-server-alpine
+    privileged: true
+    environment:
+      - 'SHARED_DIRECTORY=/nfsshare'
