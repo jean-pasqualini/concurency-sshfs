@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-sshfs root@ssh:/root /var/mount/share -o sshfs_debug,noatime,allow_other,auto_cache,reconnect,StrictHostKeyChecking=no
+echo "Attente 10 secondes..."
+
+sleep 10
+
+echo "Démarrage get file"
+
+mount -v nfs:/nfsshare /var/mount/share
 ls -al /var/mount/share
 
 while true; do

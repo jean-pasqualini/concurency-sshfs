@@ -1,7 +1,6 @@
 FROM ubuntu:16.04
 
-RUN apt-get update && apt-get install -y openssh-server
-RUN apt-get update && apt-get install -y sshfs
+RUN apt-get update && apt-get install -y nfs-common
 RUN apt-get update && apt-get install -y iputils-ping
 
 RUN mkdir -p /var/mount/share
